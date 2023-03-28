@@ -1,0 +1,15 @@
+{% include "header.html" %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% for item in items %}
+    <section>
+      <div class="product">
+        <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Sample Image" />
+        <div class="description">
+          <h3>{{ item.product_name }}</h3>
+          <h5>{{ item.product_price }}</h5>
+        </div>
+      </div>
+        <a type="button" id="checkout-button" href="{{ url_for('create_checkout_session', price=item.product_price, name=item.product_name ) }}">Checkout</a>
+    </section>
+{% endfor %}
+{% include "footer.html" %}
